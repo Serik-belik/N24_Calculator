@@ -30,6 +30,8 @@ public:
 		std::cout << "Enter first value: ";
 		std::cin >> firstVal;
 
+		print_commands();
+
 		return instance_ptr;
 	}
 
