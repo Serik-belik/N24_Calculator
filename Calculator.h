@@ -9,9 +9,6 @@ class Calculator
 
 	Calculator() = default;
 
-	void print_result()
-	{ std::cout << "Result: " << result << std::endl << std::endl; }
-
 	/* Used with bynary operators */
 	void aux_calc(const float& f, const float& s, const char op);
 
@@ -27,18 +24,24 @@ public:
 		if (instance_ptr == nullptr)
 			instance_ptr = new Calculator();
 
-		std::cout << "Enter first value: ";
-		std::cin >> firstVal;
+		//std::cout << "Enter first value: ";
+		//std::cin >> firstVal;
 
-		print_commands();
+		//print_commands();
 
 		return instance_ptr;
 	}
 
-	void calculate(const float& f, const float& s, const char op);
+	void print_result()
+	{ std::cout << "Result: " << result << std::endl << std::endl; }
 
-	void calculate(const float& second, const char op)
-	{ calculate(result, second, op); }
+	Calculator& calculate(const float& f, const float& s, const char op);
+
+	Calculator& calculate(const float& second, const char op)
+	{
+		calculate(result, second, op);
+		return *this;
+	}
 
 	static void print_commands()
 	{

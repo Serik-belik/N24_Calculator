@@ -15,14 +15,17 @@ int main()
 	char op;
 
 	Calculator* calc = Calculator::get_instance(firstVal);
+	Calculator& calcRef = *calc;
 
-	Calculator::next_iteration(op, secondVal);
-	calc->calculate(firstVal, secondVal, op);
+	calcRef.calculate(2.0f, 3.0f, '+').calculate(2.0f, 'p').calculate(50.0f, '-').calculate(0, 'a');
+	// Note: printing result is executed within calculate method; 'p' means power, 'a' means abs
 
-	while (op != 'E' && op != 'e')
-	{
-		Calculator::next_iteration(op, secondVal);
-		calc->calculate(secondVal, op);
-	};
+	//Calculator::next_iteration(op, secondVal);
+
+	//while (op != 'E' && op != 'e')
+	//{
+	//	Calculator::next_iteration(op, secondVal);
+	//	calc->calculate(secondVal, op);
+	//};
 
 }

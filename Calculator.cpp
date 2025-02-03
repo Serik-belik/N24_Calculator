@@ -37,7 +37,7 @@ void Calculator::aux_calc(const float& s, const char op)
 	}
 }
 
-void Calculator::calculate(const float& f, const float& s, const char op)
+Calculator& Calculator::calculate(const float& f, const float& s, const char op)
 {
 	if (is_uniar_operator(op))
 		aux_calc(s, op);
@@ -46,4 +46,6 @@ void Calculator::calculate(const float& f, const float& s, const char op)
 	
 	if (op != '?')
 		print_result();
+
+	return *this;
 }
