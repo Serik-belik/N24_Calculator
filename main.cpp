@@ -2,9 +2,9 @@
 #include "Calculator.h"
 
 /*
-Workshop #24
-Calculator
-Rev. A
+Workshop #26
+Calculator - Chain
+Rev. B
 */
 
 Calculator* Calculator::instance_ptr = nullptr;
