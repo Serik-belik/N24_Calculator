@@ -4,10 +4,7 @@
 
 class Calculator
 {
-	static Calculator* instance_ptr;
 	float result{ .0f };
-
-	Calculator() = default;
 
 	/* Used with bynary operators */
 	void aux_calc(const float& f, const float& s, const char op);
@@ -16,24 +13,13 @@ class Calculator
 	void aux_calc(const float& s, const char op);
 
 public:
-	Calculator(const Calculator& _) = delete;
-	~Calculator() { instance_ptr = nullptr; }
-
-	static Calculator* get_instance(float& firstVal)
-	{
-		if (instance_ptr == nullptr)
-			instance_ptr = new Calculator();
-
-		//std::cout << "Enter first value: ";
-		//std::cin >> firstVal;
-
-		//print_commands();
-
-		return instance_ptr;
-	}
+	Calculator(float val = 0.f);
+	~Calculator() = default;
 
 	void print_result()
 	{ std::cout << "Result: " << result << std::endl << std::endl; }
+
+	float get_result() const { return result; }
 
 	Calculator& calculate(const float& f, const float& s, const char op);
 
@@ -75,4 +61,15 @@ public:
 			std::cin >> secondVal;
 		}
 	}
+
+	Calculator operator+ (const Calculator& right);
+	Calculator operator- (const Calculator& right);
+	Calculator operator* (const Calculator& right);
+	Calculator operator/ (const Calculator& right);
+	operator float() const;
+	Calculator operator% (const Calculator& right);
+	Calculator operator++();
+	Calculator operator++(int);
 };
+
+std::ostream& operator<< (std::ostream& os, const Calculator& calc);
